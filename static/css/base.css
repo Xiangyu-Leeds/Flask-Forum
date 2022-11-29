@@ -1,0 +1,38 @@
+.title {
+    color: rgb(185, 43, 39) !important;
+    font-size: 30px;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-style: oblique;
+    margin-right: 80px;
+}
+
+.home {
+    /*font-size: 20px;*/
+    margin-right: 40px;
+    color: rgb(185, 43, 39) !important;
+}
+.answer {
+    /*font-size: 20px;*/
+    margin-right: 40px;
+    color: rgb(185, 43, 39) !important;
+}
+.space {
+    /*font-size: 20px;*/
+    margin-right: 100px;
+    color: rgb(185, 43, 39) !important;
+}
+
+.login {
+    color: rgb(185, 43, 39) !important;
+    margin-right: 20px;
+}
+
+.register {
+
+    color: rgb(185, 43, 39) !important;
+    margin-right: 20px;
+}
+.public {
+
+    color: rgb(185, 43, 39) !important;
+}
