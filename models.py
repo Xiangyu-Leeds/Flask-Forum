@@ -8,4 +8,5 @@ class UserModel(db.Model):
     username = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(200), nullable=False)
+    Space = db.Column(db.String(200), nullable=False)
     jointime = db.Column(db.DateTime, default=datetime.now)
