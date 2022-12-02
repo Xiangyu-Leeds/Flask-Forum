@@ -1,6 +1,6 @@
 import wtforms
 from wtforms.validators import length,email,EqualTo,InputRequired
-from models import UserModel
+from models import UserModel,EmailCaptchaModel
 
 
 
@@ -14,8 +14,9 @@ class LoginForm(wtforms.Form):
 class RegisterForm(wtforms.Form):
     username = wtforms.StringField(validators=[length(min=3,max=20,message="用户名格式错误")])
     email = wtforms.StringField(validators=[email(message="邮箱格式错误")])
+    captcha = wtforms.StringField(validators=[length(min=4, max=4, message="验证码格式错误")])
     password = wtforms.StringField(validators=[length(min=6,max=20,message="密码格式错误")])
-
+    password_confirm = wtforms.StringField(validators=[EqualTo("password")])
 
     # check the email exits
     def validate_email(self, field):
@@ -24,6 +25,22 @@ class RegisterForm(wtforms.Form):
         if user_model :
             raise wtforms.ValidationError("Email already exists！")
 
+    def validate_captcha(self, field):
+        captcha = field.data
+        email = self.email.data
+        captcha_model = EmailCaptchaModel.query.filter_by(email=email).first()
+        if not captcha_model or captcha_model.captcha.lower() != captcha.lower():
+            raise wtforms.ValidationError("Email verification code error!")
 
 
+class QuestionForm(wtforms.Form):
+    title = wtforms.StringField(validators=[length(min=3, max=200)])
+    content = wtforms.StringField(validators=[length(min=5)])
+
+
+
+
+class AnswerForm(wtforms.Form):
+    content = wtforms.StringField(validators=[length(min=1)])
+    # question_id = wtforms.IntegerField(validators=[InputRequired()])
 

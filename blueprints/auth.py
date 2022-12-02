@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request,redirect,url_for,jsonify,session,flash
-from exts import db
+from exts import db,mail
 from flask_mail import Message
-from models import UserModel
+from models import UserModel,EmailCaptchaModel
 import string
 import random
 from datetime import datetime
@@ -37,25 +37,23 @@ def register():
            password = form.password.data
 
            space = ""
-           # print(request.form.get('technology'))
-           if request.form.get('technology') =="on":
+           if request.form.get('technology') =="technology":
                space+="technology,"
-           if request.form.get('education') =="on":
+           if request.form.get('education') =="education":
                space += "education,"
-           if request.form.get('history') == "on":
+           if request.form.get('history') == "history":
                space += "history,"
-           if request.form.get('game') == "on":
+           if request.form.get('game') == "game":
                space += "game,"
-           if request.form.get('culture') == "on":
+           if request.form.get('culture') == "culture":
                space += "culture,"
-           if request.form.get('life') == "on":
+           if request.form.get('life') == "life":
                space += "life,"
-           if request.form.get('emo') == "on":
+           if request.form.get('emo') == "emo":
                space += "emo,"
-           if request.form.get('entertainment') == "on":
+           if request.form.get('entertainment') == "entertainment":
                space += "entertainment,"
            space = space[0:len(space)-1]
-           print(space)
            # print(123)
            user = UserModel( username=username, password= generate_password_hash(password),email=email,Space = space)
            try:
@@ -65,7 +63,6 @@ def register():
            except Exception as error:
                db.session.rollback()
            else:
-               print(123)
                return redirect(url_for("auth.login"))
        else:
            flash("Incorrect email or username or password format!")
@@ -94,3 +91,44 @@ def login():
         else:
                 flash("Incorrect email or password format!")
                 return redirect(url_for("auth.login"))
+
+@bp.route("/captcha",methods=['GET'])
+def get_captcha():
+    # GET,POST
+    email = request.args.get("email")
+    letters = string.ascii_letters+string.digits
+    captcha = "".join(random.sample(letters,4))
+    print(captcha)
+    if email:
+        message = Message(
+            subject="Shen Sir register",
+            recipients = [email],
+            body=f"The CAPTCHA I gave you is：{captcha},I hope you don't tell anyone!",
+            sender = "1534840095@qq.com"
+        )
+        mail.send(message)
+        captcha_model = EmailCaptchaModel.query.filter_by(email=email).first()
+        if captcha_model:
+            captcha_model.captcha = captcha
+            captcha_model.create_time = datetime.now()
+            db.session.commit()
+        else:
+            captcha_model =EmailCaptchaModel(email=email,captcha=captcha)
+            try:
+                db.session.add(captcha_model)
+                db.session.commit()
+            except Exception as error:
+                db.session.rollback()
+        # code: 200, successful, normal request
+        return jsonify({"code":200})
+    else:
+        # code: 400, client error
+        return jsonify({"code":400,"message":"Please pass the email first!"})
+
+@bp.route("/logout")
+def logout():
+    # 清除session中所有的数据
+    session.clear()
+    return redirect(url_for('auth.login'))
+
+# memcached/redis/数据库中

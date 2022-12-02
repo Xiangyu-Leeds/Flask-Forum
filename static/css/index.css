@@ -1,3 +1,16 @@
 .main {
     margin-top: 20px;
 }
+.all_space{
+    font-size: 20px;
+    font-style: oblique;
+    color:rgb(185, 43, 39);
+}
+.left{
+    display: block;
+}
+@media (max-width: 997px) {
+    .left {
+        display: none;
+    }
+}

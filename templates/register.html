@@ -10,121 +10,97 @@
 
 {% block body %}
 
-  <div class="layui-row overall">
-    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
-      <input type="text" value="1" style="visibility: hidden">
-    </div>
-    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6">
-      <div class="logo2">
-        <svg t="1667868559006" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-             p-id="8052" width="48" height="48">
-          <path d="M665 81v105H369V81h296m20-80H349c-33.1 0-60 26.9-60 60v145c0 33.1 26.9 60 60 60h336c33.1 0 60-26.9 60-60V61c0-33.1-26.9-60-60-60zM298.5 689c-37.2 0-67.5-30.3-67.5-67.5s30.3-67.5 67.5-67.5 67.5 30.3 67.5 67.5-30.3 67.5-67.5 67.5z m0-80c-6.9 0-12.5 5.6-12.5 12.5s5.6 12.5 12.5 12.5 12.5-5.6 12.5-12.5-5.6-12.5-12.5-12.5zM298.5 884c-37.2 0-67.5-30.3-67.5-67.5s30.3-67.5 67.5-67.5 67.5 30.3 67.5 67.5-30.3 67.5-67.5 67.5z m0-80c-6.9 0-12.5 5.6-12.5 12.5s5.6 12.5 12.5 12.5 12.5-5.6 12.5-12.5-5.6-12.5-12.5-12.5zM642 661H477c-22.1 0-40-17.9-40-40s17.9-40 40-40h165c22.1 0 40 17.9 40 40s-17.9 40-40 40zM762 859H477c-22.1 0-40-17.9-40-40s17.9-40 40-40h285c22.1 0 40 17.9 40 40s-17.9 40-40 40zM762 469H477c-22.1 0-40-17.9-40-40s17.9-40 40-40h285c22.1 0 40 17.9 40 40s-17.9 40-40 40z"
-                fill="#2c2c2c" p-id="8053"></path>
-          <path d="M863 177v767H171V177h118v9c0 44.2 35.8 80 80 80h296c44.2 0 80-35.8 80-80v-9h118m20-80H665v89H369V97H151c-33.1 0-60 26.9-60 60v807c0 33.1 26.9 60 60 60h732c33.1 0 60-26.9 60-60V157c0-33.1-26.9-60-60-60z"
-                fill="#2c2c2c" p-id="8054"></path>
-          <path d="M298.8 493.6c-10.2 0-20.4-3.9-28.2-11.6l-35.8-35.6c-15.7-15.6-15.8-40.9-0.2-56.6 15.6-15.7 40.9-15.8 56.6-0.2l7.6 7.6 52-51.6c15.7-15.6 41-15.5 56.6 0.2 15.6 15.7 15.5 41-0.2 56.6L327 482c-7.8 7.7-18 11.6-28.2 11.6z"
-                fill="#2c2c2c" p-id="8055"></path>
-        </svg>
-      </div>
-      <h3 class="Sign_up">
-        Sign up for Acquire
-      </h3>
-      <form class="layui-form Regi" method="POST" action="{{ url_for('auth.register') }}">
-        <div class="layui-form-item">
-          <label class="layui-form-label">Email</label>
-          <div class="layui-input-block">
-            <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-          </div>
-        </div>
-        <div class="layui-form-item">
-          <label class="layui-form-label">Username</label>
-          <div class="layui-input-block">
-            <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder=""
-                   class="layui-input">
-          </div>
-        </div>
-        <div class="layui-form-item">
-          <label class="layui-form-label">Password</label>
-          <div class="layui-input-block">
-            <input type="password" name="password" lay-verify="pass" placeholder="" autocomplete="off"
-                   class="layui-input">
-          </div>
-        </div>
-        <div class="layui-form-item" pane="">
-          <label class="layui-form-label">Space</label>
-          <div class="layui-input-block">
-            <input type="checkbox" name="technology" lay-skin="primary" title="Technology">
-            <input type="checkbox" name="education" lay-skin="primary" title="Education">
-            <input type="checkbox" name="game" lay-skin="primary" title="Game">
-            <input type="checkbox" name="history" lay-skin="primary" title="History">
-            <input type="checkbox" name="entertainment" lay-skin="primary" title="Entertainment">
-            <input type="checkbox" name="culture" lay-skin="primary" title="Culture">
-            <input type="checkbox" name="life" lay-skin="primary" title="Life">
-            <input type="checkbox" name="emo" lay-skin="primary" title="Emotion">
-          </div>
-        </div>
-        <div class="layui-form-item sumit">
-          <button class="layui-btn" lay-submit="" lay-filter="demo2">Register</button>
-        </div>
-      </form>
-    </div>
-    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
-      <input type="text" value="1" style="visibility: hidden">
-    </div>
 
+  <div class="logo2">
+    <svg t="1667868559006" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+         p-id="8052" width="48" height="48">
+      <path d="M665 81v105H369V81h296m20-80H349c-33.1 0-60 26.9-60 60v145c0 33.1 26.9 60 60 60h336c33.1 0 60-26.9 60-60V61c0-33.1-26.9-60-60-60zM298.5 689c-37.2 0-67.5-30.3-67.5-67.5s30.3-67.5 67.5-67.5 67.5 30.3 67.5 67.5-30.3 67.5-67.5 67.5z m0-80c-6.9 0-12.5 5.6-12.5 12.5s5.6 12.5 12.5 12.5 12.5-5.6 12.5-12.5-5.6-12.5-12.5-12.5zM298.5 884c-37.2 0-67.5-30.3-67.5-67.5s30.3-67.5 67.5-67.5 67.5 30.3 67.5 67.5-30.3 67.5-67.5 67.5z m0-80c-6.9 0-12.5 5.6-12.5 12.5s5.6 12.5 12.5 12.5 12.5-5.6 12.5-12.5-5.6-12.5-12.5-12.5zM642 661H477c-22.1 0-40-17.9-40-40s17.9-40 40-40h165c22.1 0 40 17.9 40 40s-17.9 40-40 40zM762 859H477c-22.1 0-40-17.9-40-40s17.9-40 40-40h285c22.1 0 40 17.9 40 40s-17.9 40-40 40zM762 469H477c-22.1 0-40-17.9-40-40s17.9-40 40-40h285c22.1 0 40 17.9 40 40s-17.9 40-40 40z"
+            fill="#2c2c2c" p-id="8053"></path>
+      <path d="M863 177v767H171V177h118v9c0 44.2 35.8 80 80 80h296c44.2 0 80-35.8 80-80v-9h118m20-80H665v89H369V97H151c-33.1 0-60 26.9-60 60v807c0 33.1 26.9 60 60 60h732c33.1 0 60-26.9 60-60V157c0-33.1-26.9-60-60-60z"
+            fill="#2c2c2c" p-id="8054"></path>
+      <path d="M298.8 493.6c-10.2 0-20.4-3.9-28.2-11.6l-35.8-35.6c-15.7-15.6-15.8-40.9-0.2-56.6 15.6-15.7 40.9-15.8 56.6-0.2l7.6 7.6 52-51.6c15.7-15.6 41-15.5 56.6 0.2 15.6 15.7 15.5 41-0.2 56.6L327 482c-7.8 7.7-18 11.6-28.2 11.6z"
+            fill="#2c2c2c" p-id="8055"></path>
+    </svg>
   </div>
+  <h3 class="Sign_up">
+    Sign up for Acquire
+  </h3>
+  <div class="row mt-4 ">
+  <div class="col-sm-4 col-md-4"></div>
+  <div class="col-sm-4 col-md-4">
+    <form method="POST" action="{{ url_for('auth.register') }}">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Captcha</label>
+        <div class="input-group">
+          <input type="text" class="form-control" name="captcha">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="captcha-btn">send captcha</button>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="password_confirm">
+      </div>
+      <div class="mb-3">
+        <div>Space</div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="technology" name="technology">
+          <label class="form-check-label" for="inlineCheckbox1">Technology</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="education" name="education">
+          <label class="form-check-label" for="inlineCheckbox2">Education</label>
+        </div>
+         <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="entertainment" name="entertainment">
+          <label class="form-check-label" for="inlineCheckbox3">Entertainment</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="life" name="life">
+          <label class="form-check-label" for="inlineCheckbox3">Life</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="emo" name="emo">
+          <label class="form-check-label" for="inlineCheckbox3">Emo</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="history" name="history">
+          <label class="form-check-label" for="inlineCheckbox3">History</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="culture" name="culture">
+          <label class="form-check-label" for="inlineCheckbox3">Culture</label>
+        </div>
 
 
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="game" name="game">
+          <label class="form-check-label" for="inlineCheckbox3">Game</label>
+        </div>
 
 
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="sumit">Register</button>
+      </div>
 
-
-
-
+    </form>
+  </div>
+  <div class="col-sm-4 col-md-4"></div>
 {% endblock %}
-
-{#<div class="row mt-4 visible-on">#}
-{#    <div class="col"></div>#}
-{#    <div class="col">#}
-{#      <form method="POST" action="">#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputEmail1" class="form-label">Email</label>#}
-{#          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">#}
-{#          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputEmail1" class="form-label">Captcha</label>#}
-{#          <div class="input-group">#}
-{#            <input type="text" class="form-control" name="captcha">#}
-{#            <div class="input-group-append">#}
-{#              <button class="btn btn-outline-secondary" type="button" id="captcha-btn">send captcha</button>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputEmail1" class="form-label">Username</label>#}
-{#          <input type="text" class="form-control" name="username">#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputPassword1" class="form-label">Password</label>#}
-{#          <input type="password" class="form-control" id="exampleInputPassword1" name="password">#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputPassword1" class="form-label">Confirm Password</label>#}
-{#          <input type="password" class="form-control" name="password_confirm">#}
-{#        </div>#}
-{#        <div class="layui-form-item">#}
-{#          <label class="layui-form-label">复选框</label>#}
-{#          <div class="layui-input-block">#}
-{#            <input type="checkbox" name="" title="写作" checked>#}
-{#            <input type="checkbox" name="" title="发呆">#}
-{#            <input type="checkbox" name="" title="禁用" disabled>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="d-grid gap-2">#}
-{#          <button class="btn btn-primary" type="sumit">Register</button>#}
-{#        </div>#}
-{#        <button type="submit" class="btn btn-primary">立即登录</button>#}
-{#      </form>#}
-{#    </div>#}
-{#    <div class="col"></div>#}
+</div>

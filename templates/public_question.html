@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  发布问答
+{% endblock %}
+
+{% block body %}
+  <div class="row" style="margin-top: 20px;">
+    <div class="col"></div>
+    <div class="col-6">
+      <h2 class="public1">public a question</h2>
+      <form class="layui-form" action="{{ url_for('qa.public_question') }}" method="post">
+        <div class="layui-form-item">
+          <label class="layui-form-label">Title</label>
+          <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required" placeholder="title" autocomplete="off"
+                   class="layui-input">
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">Space</label>
+          <div class="layui-input-block">
+            <input type="checkbox" name="technology" title="Technology" lay-skin="primary">
+            <input type="checkbox" name="education" title="Education" lay-skin="primary">
+            <input type="checkbox" name="entertainment" title="Entertainment" lay-skin="primary">
+            <input type="checkbox" name="life" title="Life" lay-skin="primary">
+            <input type="checkbox" name="emo" title="Emo" lay-skin="primary">
+            <input type="checkbox" name="history" title="History" lay-skin="primary">
+            <input type="checkbox" name="culture" title="Culture" lay-skin="primary">
+            <input type="checkbox" name="game" title="Game" lay-skin="primary">
+          </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+          <label class="layui-form-label">content</label>
+          <div class="layui-input-block">
+            <textarea name="content" placeholder="content" class="layui-textarea"></textarea>
+          </div>
+        </div>
+        {% for message in get_flashed_messages() %}
+          <div class="form-group">
+            <div class="text-danger">{{ message }}
+            </div>
+          </div>
+        {% endfor %}
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">submit</button>
+            <button type="reset" class="layui-btn layui-btn-primary">reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
+
+{% endblock %}
