@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ url_for('static',filename ='css/base.css') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename ='css/register.css') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename ='css/login.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename ='css/public.css') }}">
   <script src="{{ url_for('static',filename = 'bootstrap/bootstrap.js') }}"></script>
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../static/layui/css/layui.css">
@@ -22,7 +23,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav1">
   <div class="container">
     <a class="navbar-brand title" href="#">Acquire</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,31 +35,40 @@
         <li class="nav-item">
           <a class="nav-link answer" href="#">Answer</a>
         </li>
-           <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link space" href="#">Space</a>
         </li>
-          <li class="nav-item ms-2">
-              <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="keywords" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
-      </form>
-          </li>
+        <li class="nav-item ms-2">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="keywords" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
+          </form>
+        </li>
       </ul>
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if user %}
          <li class="nav-item">
-          <a class="nav-link login" aria-current="page" href="{{ url_for('auth.login1') }}">Login</a>
+          <span class="nav-link">{{ user.username }}</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link register" href="{{ url_for('auth.register1') }}">Register</a>
+          <a class="nav-link" href="{{ url_for('auth.logout') }}">退出登录</a>
         </li>
-       <li class="nav-item">
-          <a class="nav-link public" href="#">Public</a>
+      {% else %}
+         <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="{{ url_for('auth.login') }}">登录</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('auth.register') }}">注册</a>
+        </li>
+      {% endif %}
+       <li class="nav-item add">
+          <a class="nav-link space" href="{{ url_for('qa.public_question') }}">add a question</a>
         </li>
       </ul>
-  </div>
+    </div>
   </div>
 </nav>
-  <div class="layui-container ">
+<div class="container">
   {% block body %}{% endblock %}
 </div>
 
