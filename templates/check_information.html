@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script src="{{ url_for('static',filename = 'bootstrap/bootstrap.js') }}"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="../static/layui/css/layui.css">
+  <script src="{{ url_for('static',filename = 'js/modify.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename ='css/add_space.css') }}">
+  <script src="../static/layui/layui.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename ='css/check_information.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename = "image/favicon.ico") }}" type="image/x-icon"/>
+</head>
+<body>
+
+<div class="outside">
+  <div class="layui-form-item">
+    <label class="layui-form-label">Email</label>
+    <div class="layui-input-block">
+      <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" value="{{ user.email }}"
+             disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">Username</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+             class="layui-input"
+             value="{{ user.username }}" disabled>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">Space</label>
+    <div class="layui-input-block">
+      <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off"
+             class="layui-input"
+             value="{{ user.space }}" disabled>
+    </div>
+  </div>
+  <div class="focus">
+    <a href="{{ url_for('qa.follow',follow_id = user.id,fan_id = g.user.id) }}">
+      {% for i in list %}
+        {% if i==user.id %}
+          <svg t="1670487805394" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+               p-id="2535" width="25" height="25">
+            <path d="M697.21791 135.568628c-90.775446 0-155.800415 81.796958-183.823656 125.059274-28.053939-43.262316-93.049233-125.059274-183.822632-125.059274-130.257669 0-236.19442 117.381407-236.19442 261.648139 0 67.460438 45.757137 164.17106 101.302197 214.784808 76.835969 98.719372 292.845675 276.43082 319.512011 276.43082 27.13808 0 238.512209-174.257789 316.736804-275.247878 56.519248-51.500954 102.498442-148.344606 102.498442-215.96775C933.426657 252.949013 827.47251 135.568628 697.21791 135.568628"
+                  p-id="2536"></path>
+          </svg>
+        {% endif %}
+      {% endfor %}
+      {% for i in list1 %}
+        {% if i==user.id %}
+          <svg t="1670429657692" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+               p-id="2356" width="25" height="25">
+            <path d="M697.21791 135.568628c-90.775446 0-155.800415 81.796958-183.823656 125.059274-28.053939-43.262316-93.049233-125.059274-183.822632-125.059274-130.257669 0-236.19442 117.381407-236.19442 261.648139 0 67.460438 45.757137 164.17106 101.302197 214.784808 76.835969 98.719372 292.845675 276.43082 319.512011 276.43082 27.13808 0 238.512209-174.257789 316.736804-275.247878 56.519248-51.500954 102.498442-148.344606 102.498442-215.96775C933.426657 252.949013 827.47251 135.568628 697.21791 135.568628M877.732194 397.216767c0 53.951773-39.127136 134.464481-85.429695 175.805028-1.2689 1.153266-2.421142 2.422166-3.573385 3.811816-68.833715 89.683579-207.417003 200.922079-274.390347 249.644757C464.55185 790.038434 314.598606 676.495448 237.615281 576.479547c-1.033539-1.358951-2.24411-2.629897-3.51301-3.811816-46.127574-41.282219-85.045955-121.588219-85.045955-175.450964 0-113.571638 80.969103-205.984375 180.515307-205.984375 64.167438 0 125.944434 69.453838 158.694325 138.317229 4.339842 9.124821 13.967106 14.808264 25.12933 14.808264s20.788465-5.684466 25.157983-14.808264c32.720216-68.863391 94.466512-138.317229 158.665673-138.317229C796.761044 191.232392 877.732194 283.645129 877.732194 397.216767"
+                  p-id="2357"></path>
+          </svg>
+        {% endif %}
+      {% endfor %}
+    </a>
+  </div>
+</div>
+</body>
+
+
+</html>

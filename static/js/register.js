@@ -7,7 +7,7 @@ function bindCaptchaBtnClick(){
           alert("请先输入邮箱!");
           return;
       }
-      //通过js发送网络请求：ajax Async js and xml (JSON)
+      //ajax Async js and xml (JSON)
         $.ajax({
             url:"/auth/captcha",
             methods:"GET",

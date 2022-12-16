@@ -4,18 +4,17 @@ from models import UserModel,EmailCaptchaModel
 
 
 
-
 # check the login
 class LoginForm(wtforms.Form):
-    email = wtforms.StringField(validators=[email(message="邮箱格式错误")])
-    password = wtforms.StringField(validators=[length(min=5,max=20,message="密码格式错误")])
+    email = wtforms.StringField(validators=[email(message="Incorrect email format")])
+    password = wtforms.StringField(validators=[length(min=5,max=20,message="Incorrect password format")])
 
 # check the registration
 class RegisterForm(wtforms.Form):
-    username = wtforms.StringField(validators=[length(min=3,max=20,message="用户名格式错误")])
-    email = wtforms.StringField(validators=[email(message="邮箱格式错误")])
-    captcha = wtforms.StringField(validators=[length(min=4, max=4, message="验证码格式错误")])
-    password = wtforms.StringField(validators=[length(min=6,max=20,message="密码格式错误")])
+    username = wtforms.StringField(validators=[length(min=3,max=20,message="Incorrect username format")])
+    email = wtforms.StringField(validators=[email(message="Incorrect email format")])
+    captcha = wtforms.StringField(validators=[length(min=4, max=4, message="Incorrect captcha format")])
+    password = wtforms.StringField(validators=[length(min=6,max=20,message="Incorrect password format")])
     password_confirm = wtforms.StringField(validators=[EqualTo("password")])
 
     # check the email exits
@@ -42,5 +41,4 @@ class QuestionForm(wtforms.Form):
 
 class AnswerForm(wtforms.Form):
     content = wtforms.StringField(validators=[length(min=1)])
-    # question_id = wtforms.IntegerField(validators=[InputRequired()])
 

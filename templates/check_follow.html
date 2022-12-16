@@ -1,0 +1,85 @@
+{% extends  "base.html" %}
+
+{% block title %}sxy-首页{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+  <div class="layui-row">
+    <div class="layui-col-md3 left">
+     <input type="text" value="1" style="visibility: hidden">
+    </div>
+    <div class="layui-col-sm-12 layui-col-md6">
+      <div class="grid-demo grid-demo-bg1">
+        <div class="sum">Your follow: {{ count }}</div>
+        <ul class="question-ul">
+          {% for user in list %}
+            <li>
+              <div class="side-question">
+                <img src="{{ user.avatar_path }}" class="side-question-avatar" alt="">
+              </div>
+              <div class="question-main">
+                <div class="question-title">
+                  {{ user.username }}
+                </div>
+                <div class="question-content">{{ user.space }}</div>
+                {% if user == list[0] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[0] }}  </span>
+                  </div>
+
+                {% elif user == list[1] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[1] }}  </span>
+                  </div>
+                {% elif user == list[2] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[2] }}  </span>
+                  </div>
+
+                {% elif user == list[3] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[3] }}  </span>
+                  </div>
+
+                {% elif user == list[4] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[4] }}  </span>
+                  </div>
+
+                {% elif user == list[5] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[5] }} </span>
+                  </div>
+
+                {% elif user == list[6] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[6] }}  </span>
+                  </div>
+
+                {% elif user == list[7] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[7] }}  </span>
+                  </div>
+                {% elif user == list[8] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[8] }}  </span>
+                  </div>
+                {% elif user == list[9] %}
+                  <div class="question-detail">
+                    <span class="question-author"> follows: {{ fans[9] }}  </span>
+                  </div>
+                {% endif %}
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

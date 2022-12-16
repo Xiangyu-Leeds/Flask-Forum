@@ -13,14 +13,14 @@
 }
 .answer {
     /*font-size: 20px;*/
-    margin-right: 40px;
+    margin-right: 80px;
     color: rgb(185, 43, 39) !important;
 }
-.space {
-    /*font-size: 20px;*/
-    margin-right: 100px;
-    color: rgb(185, 43, 39) !important;
-}
+/*.space {*/
+/*    !*font-size: 20px;*!*/
+/*    margin-right: 100px;*/
+/*    color: rgb(185, 43, 39) !important;*/
+/*}*/
 
 .login {
     color: rgb(185, 43, 39) !important;
@@ -41,5 +41,15 @@
 }
 .add{
     margin-left: 18px;
-
+}
+#main{
+    /*width: 600px;*/
+    /*height:330px;*/
+    margin: 0 auto;
+    margin-top: 20px
+}
+#main2{
+    /*width: 600px;*/
+    /*height:330px;*/
+    margin: 0 auto
 }

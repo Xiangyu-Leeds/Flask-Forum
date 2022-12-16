@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script src="{{ url_for('static',filename = 'bootstrap/bootstrap.js') }}"></script>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename = "image/favicon.ico") }}" type="image/x-icon"/>
+  <link rel="stylesheet" href="../static/layui/css/layui.css">
+  <script src="{{ url_for('static',filename = 'js/modify.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename ='css/add_space.css') }}">
+  <script src="../static/layui/layui.js"></script>
+
+</head>
+<body>
+
+<div class="outside">
+  <form class="layui-form " action="/qa/add_space1" method="post" id="Add_space" name="Add_space">
+    <div class="layui-form-item">
+      <div class="layui-input-block ">
+        {% for a in List %}
+          <input type="checkbox" name="{{ a }}" title={{ a }} lay-skin="primary">
+        {% endfor %}
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" type="submit" lay-submit="" lay-filter="Sub">submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+<script>
+    layui.use(['layer', 'form'], function () {
+        $ = layui.jquery;
+        var layer = layui.layer
+            , form = layui.form;
+        var t;
+        form.on('submit(Sub)', function () {
+            layer.msg('添加成功!', {icon: 1, time: 800}, function () {
+                document.getElementById('Add_space').submit();
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.close(index);
+                window.parent.location.reload();
+            });
+            return false;
+        });
+    });
+</script>
+
+</html>

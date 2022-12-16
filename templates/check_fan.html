@@ -1,0 +1,39 @@
+{% extends  "base.html" %}
+
+{% block title %}sxy-首页{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+  <div class="layui-row">
+    <div class="layui-col-md3 left">
+      <input type="text" value="1" style="visibility: hidden">
+    </div>
+    <div class="layui-col-sm-12 layui-col-md6">
+      <div class="grid-demo grid-demo-bg1">
+        <div class="sum">Your fan: {{ count }}</div>
+        <ul class="question-ul">
+          {% for user in list %}
+            <li>
+              <div class="side-question">
+                <img src="{{ user.avatar_path }}" class="side-question-avatar" alt="">
+              </div>
+              <div class="question-main">
+                <div class="question-title">
+                  {{ user.username }}
+                </div>
+                <div class="question-content">{{ user.space }}</div>
+
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

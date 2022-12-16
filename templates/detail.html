@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}{{ question.title }}{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/detail.css') }}">
+{% endblock %}
+
+{% block body %}
+  <div class="row" style="margin-top: 20px">
+    <div class="col"></div>
+    <div class="col-8" style="background-color: #fff;padding: 20px">
+      <p class="page-title tit">{{ question.title }}</p>
+      <p class="question-info tit1">
+        <span>作者： {{ question.author.username }}</span>
+      </p>
+     <p class="question-info tit2">
+        <span>时间： {{ question.create_time }}</span>
+      </p>
+      <hr>
+      <p class="question-content con">{{ question.content }}</p>
+      <hr>
+      <h4 class="comment-group-title">评论({{ question.answers | length }}):</h4>
+      <form action="{{ url_for('qa.answer',question_id = question.id) }}" method="post" class="remark">
+        <input type="hidden" name="question_id" value="{{ question.id }}">
+        <div class="form-group">
+          <input type="text" placeholder="请填写评论" name="content" class="form-control">
+        </div>
+        <div class="form-group" style="text-align: right;margin-top: 5px">
+          <button class="btn btn-primary re">评论</button>
+        </div>
+      </form>
+      <ul class="comment-group">
+        {% for answer in question.answers %}
+          <li class="every_one">
+            <div class="user-info">
+              <span>
+                <a  onclick="profile(this,{{ answer.author.id }})">
+                <img src="{{ answer.author.avatar_path }}" class="side-question-avatar"
+                     alt="">
+                   </a>
+              </span>
+
+              <span class="username">{{ answer.author.username }}</span>
+              <span class="create-time">{{ answer.create_time }}</span>
+            </div>
+            <div class="commit1">
+              <span class="comment-content con">{{ answer.content }}</span>
+              <span class="like_commit">
+                <a href="{{ url_for('qa.like',answer_id = answer.id,user_id = g.user.id,question_id = answer.question.id) }}"
+                   class="like">
+                {% for i in list %}
+                  {% if i==answer.id %}
+                    <svg t="1670403385163" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="4883" width="25" height="25"><path
+                            d="M64 483.04V872c0 37.216 30.144 67.36 67.36 67.36H192V416.32l-60.64-0.64A67.36 67.36 0 0 0 64 483.04zM857.28 344.992l-267.808 1.696c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-68.832-155.488-137.568-145.504-60.608 8.8-67.264 61.184-67.264 126.816v59.264c0 76.064-63.84 140.864-137.856 148L256 416.96v522.4h527.552a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824z"
+                            p-id="4884"></path></svg>
+                    ({{ answer.total_like }})
+                  {% endif %}
+                {% endfor %}
+                  {% for i in list1 %}
+                    {% if i==answer.id %}
+                      <svg t="1670394055101" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                           xmlns="http://www.w3.org/2000/svg" p-id="4342" width="25" height="25"><path
+                              d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z"
+                              p-id="4343"></path></svg>
+                      ({{ answer.total_like }})
+                    {% endif %}
+                  {% endfor %}
+                  </a>
+
+              </span>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col"></div>
+  </div>
+{% endblock %}

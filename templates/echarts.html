@@ -1,0 +1,93 @@
+{% extends  "base.html" %}
+{#the charts can describe the information of these tasks#}
+{% block title %}statistics{% endblock %}
+
+{% block head %}
+  <script src="{{ url_for('static',filename = 'js/echarts.js') }}"></script>
+
+{% endblock %}
+{% block body %}
+  {#<div class="row mt-4 ">#}
+  {#  <div class="col-4 "></div>#}
+  {#  <div class="col-4 ">#}
+  {#the colomn chart#}
+  {#  </div>#}
+  {#<div class="col-4 "></div>#}
+  {#</div>#}
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="colf43rtgw">
+      <div id="main"></div>
+      {#the pie chart#}
+
+
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  {#the processes to create a chart#}
+  <script type="text/javascript">
+
+      var worldMapContainer = document.getElementById('main');
+
+      //用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
+      var resizeWorldMapContainer = function () {
+          worldMapContainer.style.width = window.innerWidth -50 + 'px';
+          worldMapContainer.style.height = window.innerHeight-50 + 'px';
+      };
+      //设置容器高宽
+      resizeWorldMapContainer();
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(worldMapContainer);
+      {#var myChart = echarts.init(document.getElementById('main'));#}
+      // Specifies the configuration items and data for the chart
+      var option = {
+          title: {
+              {#the title of the chart#}
+              text: 'bar chart of types of questions ',
+              left: 'center',
+          },
+          {#grid: {#}
+          {#    top: 50,#}
+          {#    x: 45,#}
+          {#    y: 40,#}
+          {#    x2: 30,#}
+          {#    y2: 100,#}
+              {#borderWidth:1#}
+
+
+          tooltip: {},
+          legend: {
+              data: ['quantity'],
+              height: worldMapContainer.style.height,
+              width: worldMapContainer.style.width
+          },
+          xAxis: {
+              {#name of xAxis#}
+              data: ['Edu', 'Tech', 'History', 'Emo', 'Life', 'Entertain', 'Game', 'Cul']
+
+          },
+          yAxis: {},
+          series: [
+              {
+                  name: 'number',
+                  type: 'bar',
+                  {#the data of these xAxis#}
+                  data: [{{ a }}, {{ b }}, {{ c }}, {{ d }}, {{ e }}, {{ f }}, {{ g }}, {{ h }}],
+                  barWidth: 30
+              }
+          ]
+      };
+      myChart.setOption(option);
+      window.onresize = function () {
+    //重置容器高宽
+    resizeWorldMapContainer();
+    myChart.resize();
+};
+
+
+
+
+  </script>
+{% endblock %}

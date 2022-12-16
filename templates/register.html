@@ -95,8 +95,14 @@
 
 
       </div>
+         {% for message in get_flashed_messages() %}
+          <div class="form-group">
+            <div class="text-danger">{{ message }}
+            </div>
+          </div>
+        {% endfor %}
       <div class="d-grid gap-2">
-        <button class="btn btn-primary" type="sumit">Register</button>
+        <button class="btn btn-primary re" type="sumit">Register</button>
       </div>
 
     </form>

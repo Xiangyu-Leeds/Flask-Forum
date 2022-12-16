@@ -12,9 +12,9 @@
       <div class="all_space">
         Space
       </div>
-      {% for space in spaces %}
+        {% for space in spaces %}
         <div class="space">
-          <a href="{{ url_for('qa.every_space', question_space = space.Space) }}">
+          <a href="#">
             {% if space.Space== "Education" %}
               <svg t="1669914429112" class="icon" viewBox="0 0 1024 1024" version="1.1"
                    xmlns="http://www.w3.org/2000/svg"
@@ -98,23 +98,29 @@
 
             {{ space.Space }}</a>
         </div>
-      {% endfor %}
+        {% endfor %}
     </div>
     <div class="layui-col-sm-12 layui-col-md6">
       <div class="grid-demo grid-demo-bg1">
         <ul class="question-ul">
           {% for question in questions %}
+            <div class="layui-btn-group" style="float: right;margin-top: 10px">
+              <button type="button" class="layui-btn layui-btn-primary layui-btn-sm"
+                      onclick="member_del(this,{{ question.id }})">
+                <i class="layui-icon">&#xe640;</i>
+              </button>
+            </div>
             <li>
               <div class="side-question">
                 <img src="{{ question.author.avatar_path }}" class="side-question-avatar" alt="">
               </div>
+
               <div class="question-main">
                 <div class="question-title"><a
                         href="{{ url_for('qa.question_detail',question_id = question.id) }}">{{ question.title }}
                   ({{ question.space }})</a>
                 </div>
                 <div class="question-content">{{ question.content }}</div>
-
                 <div class="question-detail">
                   <span class="question-author"> {{ question.author.username }} </span>
                   <span class="question-time"> {{ question.create_time }} </span>
@@ -126,7 +132,7 @@
       </div>
     </div>
   </div>
-
+  </div>
 
 
 {% endblock %}

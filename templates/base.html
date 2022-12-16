@@ -10,8 +10,16 @@
   <link rel="stylesheet" href="{{ url_for('static',filename ='css/register.css') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename ='css/login.css') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename ='css/public.css') }}">
-  <script src="{{ url_for('static',filename = 'bootstrap/bootstrap.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename ='css/detail.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename ='css/index.css') }}">
   <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="{{ url_for('static', filename = "image/favicon.ico") }}" type="image/x-icon"/>
+  {#  <script src="//cdn.ckeditor.com/4.4.6/standard/ckeditor.js"></script>#}
+  {#<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">#}
+  {#	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+  {#  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+  <script src="{{ url_for('static',filename = 'js/modify.js') }}"></script>
+  <script src="{{ url_for('static',filename = 'bootstrap/bootstrap.js') }}"></script>
   <link rel="stylesheet" href="../static/layui/css/layui.css">
   <script src="../static/layui/layui.js"></script>
   {% block head %}
@@ -22,7 +30,7 @@
 {#navigation bar#}
 <nav class="navbar navbar-expand-lg navbar-light bg-light nav1">
   <div class="container">
-    <a class="navbar-brand title" href="#">Acquire</a>
+    <a class="navbar-brand title" href="{{ url_for('qa.index') }}">Acquire</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,39 +38,53 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link active home" aria-current="page" href="#">Home</a>
+          <a class="nav-link active home" aria-current="page" href="{{ url_for('qa.home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link answer" href="#">Answer</a>
+          <a class="nav-link answer" href="{{ url_for('qa.answer1') }}">Answer</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link space" href="#">Space</a>
-        </li>
+
         <li class="nav-item ms-2">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="keywords" aria-label="Search">
+          <form class="d-flex" role="search" action="{{ url_for('qa.research') }}">
+            <input class="form-control me-2" type="search" placeholder="keywords" aria-label="Search" name="info">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">search</button>
           </form>
         </li>
       </ul>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 user_name">
         {% if user %}
-         <li class="nav-item">
-          <span class="nav-link">{{ user.username }}</span>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                {{ user.username }}
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" onclick="add_avatar(this)">Upload an avatar</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('qa.check_follow') }}">Follow</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('qa.check_fan') }}">Fan</a></li>
+                <li><a class="dropdown-item" onclick="change_password(this)">Change password</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('qa.get_favour') }}">Favour</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Logout</a></li>
+              </ul>
+            </div>
+          </li>
+
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ url_for('auth.login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+          </li>
+
+        {% endif %}
+
+        <li class="nav-item add">
+          <a class="nav-link space" href="{{ url_for('qa.public_question1') }}">Add</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('auth.logout') }}">退出登录</a>
-        </li>
-      {% else %}
-         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ url_for('auth.login') }}">登录</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('auth.register') }}">注册</a>
-        </li>
-      {% endif %}
-       <li class="nav-item add">
-          <a class="nav-link space" href="{{ url_for('qa.public_question') }}">add a question</a>
+          <a class="nav-link space" href="{{ url_for('qa.echarts') }}">Space</a>
         </li>
       </ul>
     </div>

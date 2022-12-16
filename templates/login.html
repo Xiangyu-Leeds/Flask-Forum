@@ -44,7 +44,12 @@
                    class="layui-input">
           </div>
         </div>
-
+        {% for message in get_flashed_messages() %}
+          <div class="form-group">
+            <div class="text-danger">{{ message }}
+            </div>
+          </div>
+        {% endfor %}
         <div class="layui-form-item sumit">
           <button class="layui-btn" lay-submit="" lay-filter="demo2">Login</button>
         </div>
@@ -56,57 +61,5 @@
 
   </div>
 
-
-
-
-
-
-
-
 {% endblock %}
 
-{#<div class="row mt-4 visible-on">#}
-{#    <div class="col"></div>#}
-{#    <div class="col">#}
-{#      <form method="POST" action="">#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputEmail1" class="form-label">Email</label>#}
-{#          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">#}
-{#          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputEmail1" class="form-label">Captcha</label>#}
-{#          <div class="input-group">#}
-{#            <input type="text" class="form-control" name="captcha">#}
-{#            <div class="input-group-append">#}
-{#              <button class="btn btn-outline-secondary" type="button" id="captcha-btn">send captcha</button>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputEmail1" class="form-label">Username</label>#}
-{#          <input type="text" class="form-control" name="username">#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputPassword1" class="form-label">Password</label>#}
-{#          <input type="password" class="form-control" id="exampleInputPassword1" name="password">#}
-{#        </div>#}
-{#        <div class="mb-3">#}
-{#          <label for="exampleInputPassword1" class="form-label">Confirm Password</label>#}
-{#          <input type="password" class="form-control" name="password_confirm">#}
-{#        </div>#}
-{#        <div class="layui-form-item">#}
-{#          <label class="layui-form-label">复选框</label>#}
-{#          <div class="layui-input-block">#}
-{#            <input type="checkbox" name="" title="写作" checked>#}
-{#            <input type="checkbox" name="" title="发呆">#}
-{#            <input type="checkbox" name="" title="禁用" disabled>#}
-{#          </div>#}
-{#        </div>#}
-{#        <div class="d-grid gap-2">#}
-{#          <button class="btn btn-primary" type="sumit">Register</button>#}
-{#        </div>#}
-{#        <button type="submit" class="btn btn-primary">立即登录</button>#}
-{#      </form>#}
-{#    </div>#}
-{#    <div class="col"></div>#}

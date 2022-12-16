@@ -1,0 +1,74 @@
+.comment-group {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+
+
+}
+
+.tit {
+    text-align: center;
+    font-size: 20px;
+}
+.tit1 {
+    color: #919257;
+    text-align: center;
+}
+.tit2 {
+    text-align: center;
+    color: #919257;
+}
+
+.con {
+    font-size: 16px;
+    color: #bababa;
+}
+
+.comment-content {
+    margin-left: 42px;
+}
+
+.create-time {
+    float: right;
+}
+
+.side-question-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.username {
+    color: #919257;
+    margin-left: 8px;
+}
+
+.commit {
+    margin-right: 5px;
+}
+
+.like {
+    margin-right: 10px;
+    margin-left: 5px;
+    /*margin-bottom: 3px;*/
+    /*width: 25px;*/
+    /*height: 25px;*/
+    /*cursor: pointer;*/
+    /*background: url('/static/dianzan.png') no-repeat;*/
+    /*background-size: cover*/
+}
+
+.total {
+    margin-left: 20px;
+}
+
+.like_commit {
+    float: right;
+}
+
+.remark {
+    margin-top: 10px;
+}
+.every_one{
+    margin-bottom: 10px;
+}
